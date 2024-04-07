@@ -33,23 +33,6 @@ const system = {
       500: 23,
       600: 18,
     },
-    families: {
-      pacifico: {
-        regular: "../../assets/fonts/Pacifico/Pacifico-Regular.ttf",
-      },
-
-      inter: {
-        black: "../../assets/fonts/Inter/static/Inter-Black.ttf",
-        bold: "../../assets/fonts/Inter/static/Inter-Bold.ttf",
-        extraBold: "../../assets/fonts/Inter/static/Inter-ExtraBold.ttf",
-        extraLight: "../../assets/fonts/Inter/static/Inter-ExtraLight.ttf",
-        light: "../../assets/fonts/Inter/static/Inter-Light.ttf",
-        medium: "../../assets/fonts/Inter/static/Inter-Medium.ttf",
-        regular: "../../assets/fonts/Inter/static/Inter-Regular.ttf",
-        semiBold: "../../assets/fonts/Inter/static/Inter-SemiBold.ttf",
-        thin: "../../assets/fonts/Inter/static/Inter-Thin.ttf",
-      },
-    },
   },
 };
 

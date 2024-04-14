@@ -1,6 +1,8 @@
 import { useFonts } from "expo-font";
-import { Stack } from "expo-router";
+import { Slot, Stack } from "expo-router";
 import StoreProvider from "../lib/storeProvider";
+import { auth } from "../firebase/firebaseConfig";
+import { useEffect, useState } from "react";
 
 export default function Layout() {
     const [fontLoaded] = useFonts({
@@ -17,11 +19,11 @@ export default function Layout() {
         "Pacifico-Regular": require("../assets/fonts/Pacifico/Pacifico-Regular.ttf"),
     });
 
-    if (!fontLoaded) return;
+    if (!fontLoaded) return null;
 
     return (
         <StoreProvider>
-            <Stack />
+            <Slot />
         </StoreProvider>
     );
 }

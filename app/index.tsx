@@ -1,14 +1,33 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { StatusBar } from "expo-status-bar";
 import { Button, StyleSheet, Text, View } from "react-native";
 import system from "../src/style/system";
-import { Link } from "expo-router";
+import { Link, useRouter } from "expo-router";
 import { useAppDispatch, useAppSelector } from "../lib/hooks";
 import { increase, selectCount } from "../lib/slices/countSlice";
+import { auth } from "../firebase/firebaseConfig";
 
 export default function App() {
+    const [authStateReady, setAuthStateReady] = useState(false);
+
     const { count } = useAppSelector(selectCount);
     const dispatch = useAppDispatch();
+    const router = useRouter();
+
+    const getAuthState = async () => {
+        await auth.authStateReady();
+        setAuthStateReady(true);
+    };
+
+    useEffect(() => {
+        getAuthState();
+    }, []);
+
+    useEffect(() => {
+        if (authStateReady && !auth.currentUser) router.replace("/login");
+    }, [authStateReady]);
+
+    if (!authStateReady || !auth.currentUser) return null;
 
     return (
         <View style={styles.container}>

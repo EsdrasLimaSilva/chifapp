@@ -10,7 +10,7 @@ export default function Login() {
         const { email, password } = loginState;
         if (email.length == 0 || password.length == 0) return;
 
-        await login(email, password);
+        const user = await login(email, password);
     };
 
     return (

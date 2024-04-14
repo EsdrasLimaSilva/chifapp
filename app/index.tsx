@@ -1,43 +1,48 @@
 import React from "react";
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
-import { useFonts } from "expo-font";
+import { Button, StyleSheet, Text, View } from "react-native";
 import system from "../src/style/system";
+import { Link } from "expo-router";
+import { useAppDispatch, useAppSelector } from "../lib/hooks";
+import { increase, selectCount } from "../lib/slices/countSlice";
 
 export default function App() {
-  const [fontLoaded] = useFonts({
-    "Inter-Black": require("../assets/fonts/Inter/static/Inter-Black.ttf"),
-    "Inter-Bold": require("../assets/fonts/Inter/static/Inter-Bold.ttf"),
-    "Inter-ExtraBold": require("../assets/fonts/Inter/static/Inter-ExtraBold.ttf"),
-    "Inter-ExtraLight": require("../assets/fonts/Inter/static/Inter-ExtraLight.ttf"),
-    "Inter-Light": require("../assets/fonts/Inter/static/Inter-Light.ttf"),
-    "Inter-Medium": require("../assets/fonts/Inter/static/Inter-Medium.ttf"),
-    "Inter-Regular": require("../assets/fonts/Inter/static/Inter-Regular.ttf"),
-    "Inter-SemiBold": require("../assets/fonts/Inter/static/Inter-SemiBold.ttf"),
-    "Inter-Thin": require("../assets/fonts/Inter/static/Inter-Thin.ttf"),
+    const { count } = useAppSelector(selectCount);
+    const dispatch = useAppDispatch();
 
-    "Pacifico-Regular": require("../assets/fonts/Pacifico/Pacifico-Regular.ttf"),
-  });
-
-  return (
-    <View style={styles.container}>
-      <Text style={styles.text}>Hello World</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+    return (
+        <View style={styles.container}>
+            <Text style={styles.text}>Hello Chif App</Text>
+            <Text>{count}</Text>
+            <Button title="increase" onPress={() => dispatch(increase())} />
+            <StatusBar style="auto" />
+            <Link style={styles.link} href="/login">
+                Login
+            </Link>
+        </View>
+    );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
+    container: {
+        flex: 1,
+        backgroundColor: "#fff",
+        alignItems: "center",
+        justifyContent: "center",
+    },
 
-  text: {
-    fontFamily: "Pacifico-Regular",
-    fontSize: system.fonts.sizes[300],
-    color: system.colors.primary[400],
-  },
+    link: {
+        paddingHorizontal: 16,
+        paddingVertical: 8,
+        fontSize: 16,
+        color: system.colors.neutral[100],
+        fontWeight: "bold",
+        backgroundColor: system.colors.primary[500],
+    },
+
+    text: {
+        fontFamily: "Pacifico-Regular",
+        fontSize: system.fonts.sizes[300],
+        color: system.colors.primary[400],
+    },
 });

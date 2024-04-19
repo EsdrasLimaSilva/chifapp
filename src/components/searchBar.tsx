@@ -44,7 +44,7 @@ const defaultBar: TextStyle = {
     justifyContent: "space-between",
     paddingHorizontal: 16,
     paddingVertical: 4,
-    width: "100%",
+    width: "90%",
 };
 
 const styles = StyleSheet.create({

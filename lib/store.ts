@@ -1,11 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 
 import countReducer from "./slices/countSlice";
+import feedSlice from "./slices/feedSlice";
 
 export const makeStore = () => {
     return configureStore({
         reducer: {
             count: countReducer,
+            feed: feedSlice,
         },
     });
 };

@@ -3,7 +3,7 @@ const system = {
         transparent: "#22222200",
         neutral: {
             100: "#FDFDFD",
-            200: "#E3E4E9",
+            200: "#F2F2F2",
             300: "#B2B8CC",
             400: "#7F8BB2",
             500: "#56679F",

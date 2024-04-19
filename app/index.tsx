@@ -8,6 +8,7 @@ import { increase, selectCount } from "../lib/slices/countSlice";
 import { auth } from "../firebase/firebaseConfig";
 import { SafeAreaView } from "react-native-safe-area-context";
 import SearchBar from "../src/components/searchBar";
+import Feed from "../src/components/feed";
 
 export default function App() {
     const [authStateReady, setAuthStateReady] = useState(false);
@@ -35,6 +36,8 @@ export default function App() {
             >
                 <Text style={styles.brand}>Chif </Text>
                 <SearchBar placeholder="search for a meal" />
+
+                <Feed />
             </ScrollView>
             <StatusBar style="auto" />
         </SafeAreaView>
@@ -45,7 +48,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: system.colors.neutral[200],
-        padding: 16,
+        paddingVertical: 16,
     },
 
     brand: {

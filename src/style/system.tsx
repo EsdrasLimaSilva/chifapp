@@ -42,7 +42,7 @@ const system = {
                 extraBold: "Inter-ExtraBold",
                 extraLight: "Inter-ExtraLight",
                 light: "Inter-Light",
-                medium: "Inter-medium",
+                medium: "Inter-Medium",
                 regular: "Inter-Regular",
                 semiBold: "Inter-SemiBold",
                 thin: "Inter-Thin",

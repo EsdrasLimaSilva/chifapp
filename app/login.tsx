@@ -1,12 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import {
-    Button,
-    Pressable,
-    StyleSheet,
-    Text,
-    TextInput,
-    View,
-} from "react-native";
+import { Pressable, StyleSheet, Text } from "react-native";
 import { useState } from "react";
 import { login } from "../firebase/authentication";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -26,7 +19,7 @@ export default function Login() {
 
     return (
         <SafeAreaView style={styles.container}>
-            <Text style={styles.brand}>Chif</Text>
+            <Text style={styles.brand}>Chif </Text>
 
             <Input
                 value={loginState.email}

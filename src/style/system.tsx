@@ -1,5 +1,6 @@
 const system = {
     colors: {
+        transparent: "#22222200",
         neutral: {
             100: "#FDFDFD",
             200: "#E3E4E9",

@@ -50,45 +50,47 @@ export default function Login() {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        justifyContent: "center",
         alignItems: "center",
-        padding: 16,
         backgroundColor: system.colors.neutral[200],
+        flex: 1,
         gap: 16,
+        justifyContent: "center",
+        padding: 16,
     },
 
     brand: {
+        color: system.colors.primary[500],
         fontFamily: "Pacifico-Regular",
         fontSize: system.fonts.sizes.h2,
-        color: system.colors.primary[500],
     },
 
     input: {
-        width: "100%",
         backgroundColor: system.colors.neutral[100],
+        borderRadius: 8,
         color: system.colors.neutral[600],
+        fontSize: system.fonts.sizes.h6,
         paddingHorizontal: 16,
         paddingVertical: 8,
-        borderRadius: 8,
-        fontSize: system.fonts.sizes.h6,
+        width: "100%",
     },
 
     submit: {
-        color: system.colors.neutral[100],
         backgroundColor: system.colors.primary[500],
+        borderRadius: 8,
+        color: system.colors.neutral[100],
         fontFamily: system.fonts.family.inter.bold,
+        fontSize: system.fonts.sizes.h6,
         paddingHorizontal: 24,
         paddingVertical: 8,
-        borderRadius: 8,
-        fontSize: system.fonts.sizes.h6,
     },
 
     link: {
+        color: system.colors.neutral[500],
         fontFamily: system.fonts.family.inter.regular,
         fontSize: system.fonts.sizes.p1,
-        textDecorationLine: "underline",
         marginVertical: 16,
-        color: system.colors.neutral[500],
+        paddingHorizontal: 16,
+        paddingVertical: 8,
+        textDecorationLine: "underline",
     },
 });

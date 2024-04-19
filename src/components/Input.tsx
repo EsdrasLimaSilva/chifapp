@@ -11,10 +11,10 @@ export default function Input({ children, ...rest }: Props) {
 
     return (
         <TextInput
-            {...rest}
             style={isFocuSed ? style.inputFocused : style.input}
             onFocus={() => setIsFocused(true)}
             onBlur={() => setIsFocused(false)}
+            {...rest}
         >
             {children}
         </TextInput>

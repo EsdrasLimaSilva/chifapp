@@ -23,7 +23,20 @@ export default function Layout() {
 
     return (
         <StoreProvider>
-            <Slot />
+            <Stack screenOptions={{ animation: "flip" }}>
+                <Stack.Screen
+                    name="index"
+                    options={{ headerShown: false, animation: "flip" }}
+                />
+                <Stack.Screen
+                    name="login"
+                    options={{ headerShown: false, animation: "flip" }}
+                />
+                <Stack.Screen
+                    name="register"
+                    options={{ headerShown: false, animation: "flip" }}
+                />
+            </Stack>
         </StoreProvider>
     );
 }

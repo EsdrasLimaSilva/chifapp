@@ -1,67 +1,63 @@
 import React, { useEffect, useState } from "react";
 import { StatusBar } from "expo-status-bar";
-import { Button, StyleSheet, Text, View } from "react-native";
+import { Button, ScrollView, StyleSheet, Text, View } from "react-native";
 import system from "../src/style/system";
 import { Link, useRouter } from "expo-router";
 import { useAppDispatch, useAppSelector } from "../lib/hooks";
 import { increase, selectCount } from "../lib/slices/countSlice";
 import { auth } from "../firebase/firebaseConfig";
+import { SafeAreaView } from "react-native-safe-area-context";
+import SearchBar from "../src/components/searchBar";
 
 export default function App() {
     const [authStateReady, setAuthStateReady] = useState(false);
-
-    const { count } = useAppSelector(selectCount);
-    const dispatch = useAppDispatch();
-    const router = useRouter();
 
     const getAuthState = async () => {
         await auth.authStateReady();
         setAuthStateReady(true);
     };
 
-    useEffect(() => {
-        getAuthState();
-    }, []);
+    // useEffect(() => {
+    //     getAuthState();
+    // }, []);
 
-    useEffect(() => {
-        if (authStateReady && !auth.currentUser) router.replace("/login");
-    }, [authStateReady]);
+    // useEffect(() => {
+    //     if (authStateReady && !auth.currentUser) router.replace("/login");
+    // }, [authStateReady]);
 
-    if (!authStateReady || !auth.currentUser) return null;
+    // if (!authStateReady || !auth.currentUser) return null;
 
     return (
-        <View style={styles.container}>
-            <Text style={styles.text}>Hello Chif App</Text>
-            <Text>{count}</Text>
-            <Button title="increase" onPress={() => dispatch(increase())} />
+        <SafeAreaView style={styles.container}>
+            <ScrollView
+                style={styles.scrollContainer}
+                contentContainerStyle={styles.scrollContentContainer}
+            >
+                <Text style={styles.brand}>Chif </Text>
+                <SearchBar placeholder="search for a meal" />
+            </ScrollView>
             <StatusBar style="auto" />
-            <Link style={styles.link} href="/login">
-                Login
-            </Link>
-        </View>
+        </SafeAreaView>
     );
 }
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "#fff",
-        alignItems: "center",
+        backgroundColor: system.colors.neutral[200],
+        padding: 16,
+    },
+
+    brand: {
+        color: system.colors.primary[500],
+        fontSize: system.fonts.sizes.h2,
+        fontFamily: system.fonts.family.pacifico.regular,
+    },
+
+    scrollContainer: {},
+
+    scrollContentContainer: {
         justifyContent: "center",
-    },
-
-    link: {
-        paddingHorizontal: 16,
-        paddingVertical: 8,
-        fontSize: 16,
-        color: system.colors.neutral[100],
-        fontWeight: "bold",
-        backgroundColor: system.colors.primary[500],
-    },
-
-    text: {
-        fontFamily: "Pacifico-Regular",
-        fontSize: system.fonts.sizes[300],
-        color: system.colors.primary[400],
+        alignItems: "center",
     },
 });

@@ -1,20 +1,25 @@
 import { Dimensions, Image, StyleSheet, Text, View } from "react-native";
 import { Post } from "../../lib/slices/feedSlice";
 import system from "../style/system";
+import Slider from "./slider";
 
 interface Props {
     post: Post;
 }
 
 export default function PostCard({ post }: Props) {
-    if (post.images.length > 1) return <Text>Multiple</Text>;
-
     return (
         <View style={styles.contianer}>
             <View style={styles.header}>
                 <Text style={styles.username}>@{post.user}</Text>
             </View>
-            <Image src={post.images[0]} style={styles.singleImage} />
+
+            {post.images.length > 1 ? (
+                <Slider imgs={post.images} />
+            ) : (
+                <Image src={post.images[0]} style={styles.singleImage} />
+            )}
+
             <View style={styles.footer}>
                 <Text>footer</Text>
             </View>
@@ -24,6 +29,7 @@ export default function PostCard({ post }: Props) {
 
 const styles = StyleSheet.create({
     contianer: {
+        flex: 1,
         width: "100%",
         backgroundColor: system.colors.neutral[100],
         borderBottomWidth: 1,
